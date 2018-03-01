@@ -30,7 +30,12 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="title" value="{{ old('title', $topic->title ) }}" placeholder="请填写标题" required/>
+                        <select class="form-control" name="category_id" required>
+                            <option value="" hidden disabled {{ $topic->id ? '' : 'selected' }}>请选择分类</option>
+                            @foreach ($categories as $value)
+                                <option value="{{ $value->id }}" {{ $topic->category_id == $value->id ? 'selected' : '' }}>{{ $value->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
