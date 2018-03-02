@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
   use HasRoles;
 
+  use Traits\LastActivedAtHelper;
+
   use Traits\ActiveUserHelper;
 
   use Notifiable {
